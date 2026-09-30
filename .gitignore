@@ -1,0 +1,21 @@
+# Environment
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Indexes (regenerated via scripts/build_indexes.py)
+indexes/*/index.faiss
+indexes/*/metadata.pkl
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/
