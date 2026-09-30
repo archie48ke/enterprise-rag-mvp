@@ -9,10 +9,6 @@ __pycache__/
 *.pyo
 .pytest_cache/
 
-# Indexes (regenerated via scripts/build_indexes.py)
-indexes/*/index.faiss
-indexes/*/metadata.pkl
-
 # OS
 .DS_Store
 Thumbs.db
