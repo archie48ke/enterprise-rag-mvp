@@ -17,7 +17,48 @@ from src.config import GROQ_API_KEY, INDEX_DIR, DOMAINS, DOMAIN_FOLDER
 from src.workflow import run_workflow
 
 st.set_page_config(page_title="AI Enterprise Knowledge Assistant", page_icon="🧠")
+st.markdown("""
+<style>
 
+    .main {
+        background-color: #f8fafc;
+    }
+
+    .block-container {
+        max-width: 1100px;
+        padding-top: 2rem;
+        padding-bottom: 5rem;
+    }
+
+    .app-title {
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+    }
+
+    .app-subtitle {
+        color: #64748b;
+        font-size: 1.05rem;
+        margin-bottom: 2rem;
+    }
+
+    .status-card {
+        padding: 1rem;
+        border-radius: 12px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 1rem;
+    }
+
+    .source-card {
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+        background: #f1f5f9;
+        margin-top: 0.5rem;
+    }
+
+</style>
+""", unsafe_allow_html=True)
 
 def indexes_exist() -> bool:
     for folder in DOMAIN_FOLDER.values():
@@ -54,8 +95,18 @@ def render_sidebar():
 def main():
     render_sidebar()
 
-    st.title("AI Enterprise Knowledge Assistant")
-    st.caption("Ask a question about company documents.")
+   st.markdown(
+    """
+    <div class="app-title">
+        🧠 Enterprise Knowledge Assistant
+    </div>
+
+    <div class="app-subtitle">
+        Search and interact with your organization's knowledge base.
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
     if not GROQ_API_KEY:
         st.error(
