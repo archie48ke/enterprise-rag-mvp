@@ -103,9 +103,8 @@ def get_app():
     return _app
 
 
-def run_workflow(question: str) -> GraphState:
-    app = get_app()
-    initial_state: GraphState = {
+def _initial_state(question: str) -> GraphState:
+    return {
         "question": question,
         "domain": "",
         "retrieved_chunks": [],
@@ -113,5 +112,17 @@ def run_workflow(question: str) -> GraphState:
         "citations": [],
         "error": "",
     }
-    result = app.invoke(initial_state)
-    return result
+
+
+def run_workflow(question: str) -> GraphState:
+    return get_app().invoke(_initial_state(question))
+
+
+def stream_workflow(question: str):
+    """
+    Same pipeline as run_workflow, but yields (node_name, state) after each
+    node finishes so the UI can show live progress for every step.
+    """
+    for update in get_app().stream(_initial_state(question), stream_mode="updates"):
+        for node_name, state in update.items():
+            yield node_name, state

@@ -14,4 +14,7 @@ __pycache__/
 Thumbs.db
 
 # Streamlit
-.streamlit/
+.streamlit/secrets.toml
+
+# Local conversation history
+history/

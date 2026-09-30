@@ -1,0 +1,13 @@
+[theme]
+base = "dark"
+primaryColor = "#a855f7"
+backgroundColor = "#07070b"
+secondaryBackgroundColor = "#14111f"
+textColor = "#ececf1"
+
+[client]
+toolbarMode = "minimal"
+
+[server]
+# Streamlit's watcher crawls transformers' lazy modules and logs torchvision tracebacks.
+fileWatcherType = "none"

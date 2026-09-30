@@ -67,3 +67,16 @@ def test_workflow_end_to_end_hr_question():
 def test_workflow_abstains_on_unknown_question():
     result = run_workflow("Who is the president of France?")
     assert NO_ANSWER_MESSAGE in result["answer"] or result["answer"] == NO_ANSWER_MESSAGE
+
+
+def test_parse_follow_ups_handles_fenced_json():
+    from src.agents import parse_follow_ups
+
+    raw = '```json\n{"questions": ["A?", "B?", "C?", "D?"]}\n```'
+    assert parse_follow_ups(raw) == ["A?", "B?", "C?"]
+
+
+def test_parse_follow_ups_returns_empty_on_garbage():
+    from src.agents import parse_follow_ups
+
+    assert parse_follow_ups("not json at all") == []

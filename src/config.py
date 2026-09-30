@@ -187,7 +187,9 @@ def index_paths(domain: str):
     Return (faiss_index_path, metadata_path) for a given domain.
     """
 
-    folder = DOMAIN_FOLDER.get(domain, "general")
+    # Unknown domains map to a folder that will not exist, so the retriever
+    # raises DomainIndexNotFound instead of silently searching another index.
+    folder = DOMAIN_FOLDER.get(domain, domain.lower())
 
     domain_dir = INDEX_DIR / folder
 
