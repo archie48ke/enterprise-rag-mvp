@@ -95,18 +95,18 @@ def render_sidebar():
 def main():
     render_sidebar()
 
-   st.markdown(
-    """
-    <div class="app-title">
-        🧠 Enterprise Knowledge Assistant
-    </div>
+    st.markdown(
+        """
+        <div class="app-title">
+            🧠 Enterprise Knowledge Assistant
+        </div>
 
-    <div class="app-subtitle">
-        Search and interact with your organization's knowledge base.
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+        <div class="app-subtitle">
+            Search and interact with your organization's knowledge base.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     if not GROQ_API_KEY:
         st.error(
